@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(49, 245, 235);
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 10;
+      padding: 10;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 90px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .typing-text {
+      background: #f2f2f2;
+      background-image: url('snavy.JPG');
+      padding: 20px;
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: 400;
+      font-style: italic;
+      margin-top: 50px;
+      color: #0f0f0f;
+    }
+
+    .image-container {
+      position: relative;
+      display: inline-block;
+      margin: 20px;
+      perspective: 1000px;
+    }
+
+    .image-container a,
+    .image-container img {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .image-container:hover a {
+      transform: rotateY(180deg);
+    }
+
+    .image-container a {
+      transform: rotateY(0deg);
+      display: block;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 18px;
+      padding: 10px;
+      text-align: center;
+      transform: rotateY(180deg);
+    }
+
+    .image-container:hover .image-overlay {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+
+    .image-container:hover img {
+      opacity: 0.7;
+    }
+
+    .content {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .animated-paragraph {
+      animation: slide-up 1s ease-in-out infinite alternate;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-top: 20px;
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(10px);
+      }
+      to {
+        transform: translateY(-30px);
+      }
+    }
+  </style>
+</head>
+<body style="background-color:rgb(49, 245, 235);">
+  <nav>
+    <ul>
+      <li><a href="index.html" target="_parent">Home</a></li>
+      <li><a href="about.html" target="_parent">About</a></li>
+      <li><a href="#projects" target="_parent">Projects</a></li>
+      <li><a href="#contact.htm" target="_parent">Contact</a></li>
+    </ul>
+  </nav>
+  <header>
+    <h1>About Me</h1>
+  </header>
+
+  <section class="typing-text">
+    <h2>My Portfolio</h2>
+    <p id="text-animation"></p>
+  </section>
+
+  <section class="image-effects" height="50%">
+    <h2>My Images</h2>
+    <div class="image-container">
+      <a href="#">
+        <img src="snavy.JPG" alt="Image 1">
+        <div class="image-overlay">I do believe Technology changes life</div>
+      </a>
+    </div>
+    <div class="image-container">
+      <a href="#">
+        <img src="kitosh.jpg" alt="Image 2">
+        <div class="image-overlay">Inspire a generation to understand beauty in the digital future</div>
+      </a>
+    </div>
+    <div class="image-container">
+      <a href="#">
+        <img src="snavy.JPG" alt="Image 3">
+        <div class="image-overlay">It's simple, do not complicate<br>Assistance is the best answer to solve complexity</div>
+      </a>
+    </div>
+  </section>
+  <div class="content">
+    <h2>My Big Calling</h2>
+    <p class="animated-paragraph">lets support each other to make this world beautiful.Friends have a great impact on our future when one stands, the other will also stand. Do your best in life and learn to assist when called upon. Feel free to ask for support in the IT world and let's share our knowledge...<br>#Its simple dont complicate</p>
+  </div>
+
+  <script>
+    var text = "My name is Evans Kitonga, a certified Information System Security. A self-motivated person who can work without supervision. My biggest aim is to see a secure system and see companies growing in the best area of IT. I have based my skills in graphics design, Web Development, Video Editing, and many more skills in the area of IT. I enjoy being part of different sectors' success promoting quality and affordable services. IT is the way to go for me, and looking forward to bringing impact in the country and worldwide connection";
+    var textAnimation = document.getElementById("text-animation");
+    var index = 0;
+
+    function animateText() {
+      textAnimation.textContent += text.charAt(index);
+      index++;
+
+      if (index < text.length) {
+        setTimeout(animateText, 100);
+      }
+    }
+
+    animateText();
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const imageContainers = document.querySelectorAll('.image-container');
+
+      imageContainers.forEach((container) => {
+        container.addEventListener('mouseenter', () => {
+          const overlay = container.querySelector('.image-overlay');
+          overlay.style.opacity = '1';
+        });
+
+        container.addEventListener('mouseleave', () => {
+          const overlay = container.querySelector('.image-overlay');
+          overlay.style.opacity = '0';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
